@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}TechConf 2025 - Майбутнє Технологій{% endblock %}
+
+{% block content %}
+<div class="hero-section bg-primary text-white py-5 mb-5">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <h1 class="display-4 fw-bold mb-4">TechConf 2025</h1>
+                <p class="lead mb-4">Приєднуйтесь до найочікуванішої технологічної конференції року. Відкрийте майбутнє ШІ, Хмарних Обчислень та Цифрової Трансформації.</p>
+                <div class="d-flex gap-3 mb-4">
+                    <div class="text-center">
+                        <i class="bi bi-calendar-event fs-1"></i>
+                        <p class="mb-0">20.05.2025-22.05.2025</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="bi bi-geo-alt fs-1"></i>
+                        <p class="mb-0">Київ, Україна</p>
+                    </div>
+                </div>
+                {% if not current_user %}
+                <a href="/register" class="btn btn-light btn-lg">
+                    <i class="bi bi-ticket-perforated"></i> Зареєструватися
+                </a>
+                {% endif %}
+            </div>
+            <div class="col-lg-6">
+                <div class="position-relative">
+                    <img src="{{ url_for('static', path='/images/conference.jpg') }}" 
+                         alt="Технологічна Конференція" 
+                         class="img-fluid rounded shadow"
+                         onerror="this.onerror=null; this.src='https://placehold.co/600x400/0d6efd/ffffff?text=Tech+Conference'">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <h2 class="text-center mb-4">Чому Варто Відвідати TechConf 2024?</h2>
+    <div class="row g-4">
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm feature-card">
+                <div class="card-body text-center">
+                    <i class="bi bi-people-fill text-primary fs-1 mb-3"></i>
+                    <h3 class="card-title">Досвідчені спікери</h3>
+                    <p class="card-text">Навчайтесь у лідерів галузі та інноваторів, які формують майбутнє технологій.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm feature-card">
+                <div class="card-body text-center">
+                    <i class="bi bi-lightning-charge-fill text-primary fs-1 mb-3"></i>
+                    <h3 class="card-title">Передові теми</h3>
+                    <p class="card-text">Досліджуйте останні тренди в ШІ, Хмарних Обчисленнях, Кібербезпеці та інших сферах.</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 shadow-sm feature-card">
+                <div class="card-body text-center">
+                    <i class="bi bi-shield-check text-primary fs-1 mb-3"></i>
+                    <h3 class="card-title">Нетворкінг</h3>
+                    <p class="card-text">Спілкуйтесь з професіоналами та компаніями на передовій технологій.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container mb-5">
+    <h2 class="text-center mb-4">Основний Розклад Конференції</h2>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-3 shadow-sm schedule-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded p-2 me-3">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <h5 class="card-title mb-0">День 1: ШІ та Машинне Навчання</h5>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Ключова доповідь: Майбутнє ШІ</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Мастер-класи з Машинного Навчання</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Панельна дискусія про Етику ШІ</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-3 shadow-sm schedule-card">
+                <div class="card-body">
+                    <div class="d-flex align-items-center mb-3">
+                        <div class="bg-primary text-white rounded p-2 me-3">
+                            <i class="bi bi-calendar-check"></i>
+                        </div>
+                        <h5 class="card-title mb-0">День 2: Хмарні сервіси та Кібербезпека</h5>
+                    </div>
+                    <ul class="list-unstyled">
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Поглиблений огляд Хмарної Архітектури</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Найкращі практики Кібербезпеки</li>
+                        <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Трансформація DevOps</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="bg-light py-5">
+    <div class="container text-center">
+        <h2 class="mb-4">Готові приєднатися?</h2>
+        <p class="lead mb-4">Не пропустіть можливість навчитися, поспілкуватися та розвинутися.</p>
+        {% if not current_user %}
+        <a href="/register" class="btn btn-primary btn-lg">
+            <i class="bi bi-ticket-perforated"></i> Зареєструватися
+        </a>
+        {% else %}
+        <a href="/profile" class="btn btn-primary btn-lg">
+            <i class="bi bi-person-lines-fill"></i> Переглянути Профіль
+        </a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %} 

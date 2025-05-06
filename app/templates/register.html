@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+
+{% block title %}Реєстрація{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-8 col-lg-6">
+        <div class="card shadow">
+            <div class="card-header bg-primary text-white text-center">
+                <h4 class="mb-0"><i class="bi bi-person-plus-fill"></i> Реєстрація</h4>
+            </div>
+            <div class="card-body">
+                {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+                {% endif %}
+                <form method="POST" action="/register">
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="name" class="form-label">Ім'я</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control" id="name" name="name" required
+                                    placeholder="Введіть ваше ім'я">
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="surname" class="form-label">Прізвище</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-person"></i></span>
+                                <input type="text" class="form-control" id="surname" name="surname" required
+                                    placeholder="Введіть ваше прізвище">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="sex" class="form-label">Стать</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-gender-ambiguous"></i></span>
+                                <select class="form-select" id="sex" name="sex" required>
+                                    <option value="">Оберіть стать</option>
+                                    <option value="male">Чоловіча</option>
+                                    <option value="female">Жіноча</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="birthdate" class="form-label">Дата народження</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="bi bi-calendar"></i></span>
+                                <input type="date" class="form-control" id="birthdate" name="birthdate" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="nationality" class="form-label">Національність</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-globe"></i></span>
+                            <input type="text" class="form-control" id="nationality" name="nationality" required
+                                placeholder="Введіть вашу національність">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="organization_name" class="form-label">Організація</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-building"></i></span>
+                            <input type="text" class="form-control" id="organization_name" name="organization_name" required
+                                placeholder="Введіть назву вашої організації">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="job_title" class="form-label">Посада</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-briefcase"></i></span>
+                            <input type="text" class="form-control" id="job_title" name="job_title" required
+                                placeholder="Введіть вашу посаду">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Електронна пошта</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-envelope"></i></span>
+                            <input type="email" class="form-control" id="email" name="email" required
+                                placeholder="Введіть вашу електронну пошту">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Пароль</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-key"></i></span>
+                            <input type="password" class="form-control" id="password" name="password" required
+                                placeholder="Введіть ваш пароль">
+                        </div>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="confirm_password" class="form-label">Підтвердження паролю</label>
+                        <div class="input-group">
+                            <span class="input-group-text"><i class="bi bi-key-fill"></i></span>
+                            <input type="password" class="form-control" id="confirm_password" name="confirm_password" required
+                                placeholder="Підтвердіть ваш пароль">
+                        </div>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary">
+                            <i class="bi bi-person-plus-fill"></i> Зареєструватися
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="card-footer text-center">
+                <p class="mb-0">Вже маєте обліковий запис? 
+                    <a href="/login" class="text-decoration-none">Увійти</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 

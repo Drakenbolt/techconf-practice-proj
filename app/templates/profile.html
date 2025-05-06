@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block title %}Редагування профілю{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="text-center">Оновлення профілю</h3>
+                </div>
+                <div class="card-body">
+                    {% if error %}
+                    <div class="alert alert-danger" role="alert">
+                        {{ error }}
+                    </div>
+                    {% endif %}
+                    <form method="POST" action="/profile">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="name" class="form-label">Ім'я</label>
+                                    <input type="text" class="form-control" id="name" name="name" value="{{ current_user.name }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="surname" class="form-label">Прізвище</label>
+                                    <input type="text" class="form-control" id="surname" name="surname" value="{{ current_user.surname }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="sex" class="form-label">Стать</label>
+                                    <select class="form-select" id="sex" name="sex" required>
+                                        <option value="" disabled hidden>Оберіть стать</option>
+                                        <option value="male" {% if current_user.sex == 'male' %}selected{% endif %}>Чоловіча</option>
+                                        <option value="female" {% if current_user.sex == 'female' %}selected{% endif %}>Жіноча</option>
+                                    </select>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="nationality" class="form-label">Національність</label>
+                                    <input type="text" class="form-control" id="nationality" name="nationality" value="{{ current_user.nationality }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="organization_name" class="form-label">Назва організації</label>
+                                    <input type="text" class="form-control" id="organization_name" name="organization_name" value="{{ current_user.organization_name }}" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="job_title" class="form-label">Посада</label>
+                                    <input type="text" class="form-control" id="job_title" name="job_title" value="{{ current_user.job_title }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="birthdate" class="form-label">Дата народження</label>
+                                    <input type="date" class="form-control" id="birthdate" name="birthdate" value="{{ current_user.birthdate }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="email" class="form-label">Електронна пошта</label>
+                                    <input type="email" class="form-control" id="email" name="email" value="{{ current_user.email }}" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="current_password" class="form-label">Поточний пароль (для зміни паролю)</label>
+                                    <input type="password" class="form-control" id="current_password" name="current_password">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="new_password" class="form-label">Новий пароль</label>
+                                    <input type="password" class="form-control" id="new_password" name="new_password">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="confirm_password" class="form-label">Підтвердження нового паролю</label>
+                                    <input type="password" class="form-control" id="confirm_password" name="confirm_password">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary">Оновити профіль</button>
+                            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#deleteAccountModal">Видалити обліковий запис</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="deleteAccountModal" tabindex="-1" aria-labelledby="deleteAccountModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="deleteAccountModalLabel">Видалення Облікового Запису</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>Ви впевнені, що хочете видалити свій обліковий запис? Цю дію неможливо скасувати.</p>
+                <form method="POST" action="/delete-account">
+                    <div class="mb-3">
+                        <label for="confirm_password_delete" class="form-label">Введіть ваш пароль для підтвердження</label>
+                        <input type="password" class="form-control" id="confirm_password_delete" name="confirm_password" required>
+                    </div>
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-danger">Видалити Обліковий Запис</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %} 
